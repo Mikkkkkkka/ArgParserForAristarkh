@@ -1,0 +1,3 @@
+C:/Users/NeSai/CLionProjects/ArgParserForAristarkh/cmake-build-debug/CMakeFiles/ArgParserForAristarkh.dir
+C:/Users/NeSai/CLionProjects/ArgParserForAristarkh/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/NeSai/CLionProjects/ArgParserForAristarkh/cmake-build-debug/CMakeFiles/rebuild_cache.dir

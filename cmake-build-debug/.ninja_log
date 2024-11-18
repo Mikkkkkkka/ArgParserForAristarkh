@@ -1,0 +1,23 @@
+# ninja log v6
+117	12039	7535923398097239	CMakeFiles/ArgParserForAristarkh.dir/argparser.cpp.obj	328c525b903f059b
+51	2182	7535923809907121	CMakeFiles/ArgParserForAristarkh.dir/main.cpp.obj	c9b3e0d74bf9d11
+2184	6679	7535923831235175	ArgParserForAristarkh.exe	aef85d20297a4bb4
+45	2436	7535925629456647	CMakeFiles/ArgParserForAristarkh.dir/main.cpp.obj	c9b3e0d74bf9d11
+2438	6617	7535925653386867	ArgParserForAristarkh.exe	aef85d20297a4bb4
+55	9952	7535925967367766	CMakeFiles/ArgParserForAristarkh.dir/argparser.cpp.obj	328c525b903f059b
+9953	14245	7535926066345506	ArgParserForAristarkh.exe	aef85d20297a4bb4
+19	2529	7535929911332932	CMakeFiles/ArgParserForAristarkh.dir/main.cpp.obj	c9b3e0d74bf9d11
+30	10552	7535929911443677	CMakeFiles/ArgParserForAristarkh.dir/argparser.cpp.obj	328c525b903f059b
+10552	14876	7535930016665771	ArgParserForAristarkh.exe	aef85d20297a4bb4
+37	2451	7535930441017972	CMakeFiles/ArgParserForAristarkh.dir/main.cpp.obj	c9b3e0d74bf9d11
+2453	6699	7535930465185506	ArgParserForAristarkh.exe	aef85d20297a4bb4
+35	2781	7535936728198734	CMakeFiles/ArgParserForAristarkh.dir/main.cpp.obj	c9b3e0d74bf9d11
+46	10374	7535936728314288	CMakeFiles/ArgParserForAristarkh.dir/argparser.cpp.obj	328c525b903f059b
+10374	14822	7535936831600315	ArgParserForAristarkh.exe	aef85d20297a4bb4
+37	2393	7535937141073473	CMakeFiles/ArgParserForAristarkh.dir/main.cpp.obj	c9b3e0d74bf9d11
+2396	6671	7535937164666071	ArgParserForAristarkh.exe	aef85d20297a4bb4
+36	2337	7535937288378672	CMakeFiles/ArgParserForAristarkh.dir/main.cpp.obj	c9b3e0d74bf9d11
+2338	6572	7535937311395476	ArgParserForAristarkh.exe	aef85d20297a4bb4
+45	2510	7535943546643079	CMakeFiles/ArgParserForAristarkh.dir/main.cpp.obj	c9b3e0d74bf9d11
+59	10036	7535943546785506	CMakeFiles/ArgParserForAristarkh.dir/argparser.cpp.obj	328c525b903f059b
+10036	14268	7535943646539738	ArgParserForAristarkh.exe	aef85d20297a4bb4
