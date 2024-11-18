@@ -1,8 +1,8 @@
 ﻿#include <iostream>
-#include "argparser.h"
+#include "ArgParser.h"
 
 // Пример програмных аргументов
-// --name=Alexander --age=17 -- single=true
+// --name=Alexander --age=17 --single
 
 int main(int argc, char** argv) {
 
@@ -11,17 +11,21 @@ int main(int argc, char** argv) {
     for (int i = 0; i < argc; i++)
         args.emplace_back(argv[i]);
 
-    argparser parser;
-    parser.Parse(args);
+    ArgumentParser::ArgParser parser("DaBlyat'");
+    parser.AddStringArgument("name");
+    parser.AddIntArgument("age");
+    parser.AddBoolArgument("single");
+    if (!parser.Parse(args))
+        return 5318008;
+
 
     // Пользуемся классом
     std::cout << "Hi " << parser.GetStringValue("name") << "!" << std::endl;
-    std::cout << "You're " << parser.GetIntegerValue("age") << ", ";
+    std::cout << "You're " << parser.GetIntValue("age") << ", ";
     std::cout << "and " << (parser.GetBoolValue("single") ? "still don't " : "already ") << "have a girlfriend?" << std::endl;
 
 
     std::cout << std::endl;
-    parser.PrintAll();
 
     return 0;
 }
