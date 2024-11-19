@@ -57,9 +57,9 @@ namespace ArgumentParser {
             }
         };
 
-        std::vector<IntArgument> _intArguments;
-        std::vector<BoolArgument> _boolArguments;
-        std::vector<StringArgument> _stringArguments;
+        std::vector<IntArgument*> _intArguments;
+        std::vector<BoolArgument*> _boolArguments;
+        std::vector<StringArgument*> _stringArguments;
 
     public:
         std::string Name;
