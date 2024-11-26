@@ -12,74 +12,67 @@ namespace ArgumentParser {
 
     class ArgParser {
 
-        class IntArgument {
+        template<typename T>
+        class Argument {
         public:
             std::string name;
             char shortName = '_';
-            int value = 0;
+            T value;
+            std::vector<T> values;
+            T* storedValue = nullptr;
+            std::vector<T>* storedValues = nullptr;
+            int multiValue = -1;
             bool hasDefault = false;
             bool wasUpdated = false;
 
-            IntArgument* StoreValue(int newValue) {
-                value = newValue;
+            Argument<T>& SetDefault(T defaultValue) {
+                value = defaultValue;
                 hasDefault = true;
-                return this;
+                return *this;
+            }
+
+            Argument<T>& StoreValue(T& value) {
+                storedValue = &value;
+                return *this;
+            }
+
+            Argument<T>& MultiValue(size_t minArgsCount = 1) {
+                multiValue = minArgsCount;
+                return *this;
+            }
+
+            Argument<T>& StoreValues(std::vector<T>& values) {
+                storedValues = &values;
+                return *this;
             }
         };
 
-        class BoolArgument {
-        public:
-            std::string name;
-            char shortName = '_';
-            bool value = false;
-            bool hasDefault = true;
-            bool wasUpdated = false;
-
-            BoolArgument* StoreValue(bool newValue) {
-                value = newValue;
-                hasDefault = true;
-                return this;
-            }
-        };
-
-        class StringArgument {
-        public:
-            std::string name;
-            char shortName = '_';
-            std::string value;
-            bool hasDefault = false;
-            bool wasUpdated = false;
-
-            StringArgument* StoreValue(std::string newValue) {
-                value = newValue;
-                hasDefault = true;
-                return this;
-            }
-        };
-
-        std::vector<IntArgument*> _intArguments;
-        std::vector<BoolArgument*> _boolArguments;
-        std::vector<StringArgument*> _stringArguments;
+        std::vector<Argument<int>*> _intArguments;
+        std::vector<Argument<bool>*> _boolArguments;
+        std::vector<Argument<std::string>*> _stringArguments;
 
     public:
         std::string Name;
 
         bool Parse(std::vector<std::string> args);
 
-        IntArgument* AddIntArgument(std::string paramName);
-        IntArgument* AddIntArgument(char shortParamName, std::string paramName);
+        Argument<int>& AddIntArgument(std::string paramName);
+        Argument<int>& AddIntArgument(char shortParamName, std::string paramName);
 
-        BoolArgument* AddBoolArgument(std::string paramName);
-        BoolArgument* AddBoolArgument(char shortParamName, std::string paramName);
+        Argument<bool>& AddBoolArgument(std::string paramName);
+        Argument<bool>& AddBoolArgument(char shortParamName, std::string paramName);
 
-        StringArgument* AddStringArgument(std::string paramName);
-        StringArgument* AddStringArgument(char shortParamName, std::string paramName);
+        Argument<std::string>& AddStringArgument(std::string paramName);
+        Argument<std::string>& AddStringArgument(char shortParamName, std::string paramName);
 
         int GetIntValue(std::string key);
+        int GetIntValue(std::string key, int index);
 
         bool GetBoolValue(std::string key);
+        bool GetBoolValue(std::string key, int index);
 
         std::string GetStringValue(std::string key);
+        std::string GetStringValue(std::string key, int index);
 
         ArgParser(std::string name);
     };

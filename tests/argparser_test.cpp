@@ -45,7 +45,7 @@ TEST(ArgParserTestSuite, ShortNameTest) {
 
 TEST(ArgParserTestSuite, DefaultTest) {
     ArgParser parser("My Parser");
-    parser.AddStringArgument("param1")->StoreValue("value1");
+    parser.AddStringArgument("param1").SetDefault("value1");
 
     ASSERT_TRUE(parser.Parse(SplitString("app")));
     ASSERT_EQ(parser.GetStringValue("param1"), "value1");
@@ -63,7 +63,7 @@ TEST(ArgParserTestSuite, NoDefaultTest) {
 TEST(ArgParserTestSuite, StoreValueTest) {
     ArgParser parser("My Parser");
     std::string value;
-    parser.AddStringArgument("param1")->StoreValue(value);
+    parser.AddStringArgument("param1").StoreValue(value);
 
     ASSERT_TRUE(parser.Parse(SplitString("app --param1=value1")));
     ASSERT_EQ(value, "value1");
@@ -73,7 +73,7 @@ TEST(ArgParserTestSuite, StoreValueTest) {
 TEST(ArgParserTestSuite, MultiStringTest) {
     ArgParser parser("My Parser");
     std::string value;
-    parser.AddStringArgument("param1")->StoreValue(value);
+    parser.AddStringArgument("param1").StoreValue(value);
     parser.AddStringArgument('a', "param2");
 
     ASSERT_TRUE(parser.Parse(SplitString("app --param1=value1 --param2=value2")));
@@ -89,29 +89,29 @@ TEST(ArgParserTestSuite, IntTest) {
     ASSERT_EQ(parser.GetIntValue("param1"), 100500);
 }
 
-//
-// TEST(ArgParserTestSuite, MultiValueTest) {
-//     ArgParser parser("My Parser");
-//     std::vector<int> int_values;
-//     parser.AddIntArgument('p', "param1").MultiValue().StoreValues(int_values);
-//
-//     ASSERT_TRUE(parser.Parse(SplitString("app --param1=1 --param1=2 --param1=3")));
-//     ASSERT_EQ(parser.GetIntValue("param1", 0), 1);
-//     ASSERT_EQ(int_values[1], 2);
-//     ASSERT_EQ(int_values[2], 3);
-// }
-//
-//
-// TEST(ArgParserTestSuite, MinCountMultiValueTest) {
-//     ArgParser parser("My Parser");
-//     std::vector<int> int_values;
-//     size_t MinArgsCount = 10;
-//     parser.AddIntArgument('p', "param1").MultiValue(MinArgsCount).StoreValues(int_values);
-//
-//     ASSERT_FALSE(parser.Parse(SplitString("app --param1=1 --param1=2 --param1=3")));
-// }
-//
-//
+
+TEST(ArgParserTestSuite, MultiValueTest) {
+    ArgParser parser("My Parser");
+    std::vector<int> int_values;
+    parser.AddIntArgument('p', "param1").MultiValue().StoreValues(int_values);
+
+    ASSERT_TRUE(parser.Parse(SplitString("app --param1=1 --param1=2 --param1=3")));
+    ASSERT_EQ(parser.GetIntValue("param1", 0), 1);
+    ASSERT_EQ(int_values[1], 2);
+    ASSERT_EQ(int_values[2], 3);
+}
+
+
+TEST(ArgParserTestSuite, MinCountMultiValueTest) {
+    ArgParser parser("My Parser");
+    std::vector<int> int_values;
+    size_t MinArgsCount = 10;
+    parser.AddIntArgument('p', "param1").MultiValue(MinArgsCount).StoreValues(int_values);
+
+    ASSERT_FALSE(parser.Parse(SplitString("app --param1=1 --param1=2 --param1=3")));
+}
+
+
 // TEST(ArgParserTestSuite, FlagTest) {
 //     ArgParser parser("My Parser");
 //     parser.AddFlag('f', "flag1");
@@ -206,7 +206,7 @@ TEST(ArgParserTestSuite, IntTest) {
     // ASSERT_TRUE(parser.Parse(SplitString("app --help")));
     // Проверка закоментирована намеренно. Ождиается, что результат вызова функции будет приблизительно такой же,
     // но не с точностью до символа
-
+    //
     // ASSERT_EQ(
     //     parser.HelpDescription(),
     //     "My Parser\n"
