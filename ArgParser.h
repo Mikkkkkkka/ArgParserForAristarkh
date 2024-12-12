@@ -101,7 +101,7 @@ namespace ArgumentParser {
         Argument<bool>& AddFlag(char flagShortName, std::string flagName);
         Argument<bool>& AddFlag(char flagShortName, std::string flagName, std::string description);
 
-        Argument<int>& AddHelp(char helpShortName, std::string helpName, std::string description);
+        void AddHelp(char helpShortName, std::string helpName, std::string description);
 
 
         // Getters
@@ -113,6 +113,7 @@ namespace ArgumentParser {
 
         bool GetFlag(std::string key);
 
+        std::string HelpDescription();
         ArgParser(std::string name);
     };
 
